@@ -1,0 +1,106 @@
+package lt.griskelis;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class DbPrisijungimas {
+
+	public static void main(String[] args) {
+		
+		/*
+		Connection c = null;
+	    Statement stmt = null;
+	    try {
+	      Class.forName("org.sqlite.JDBC");
+	      c = DriverManager.getConnection("jdbc:sqlite:C:/Users/user/Downloads/SQLiteStudio/DuomenuBaze.db");	      
+	      c.setAutoCommit(false);
+	      System.out.println("Sekmingai prisijungta prie duomenu bazes");
+
+	      stmt = c.createStatement();
+	      String sql = "INSERT INTO UZSAKYMAI (UZSAKYMAIID,UZSAKYMODATA, STATUSAS) " + "VALUES (8,'2017.01.01', 'LAUKIAMA');";	      
+	      stmt.executeUpdate(sql);
+	      stmt.close();
+	      c.commit();
+	      c.close();
+	    } catch ( Exception e ) {
+	      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+	      System.exit(0);
+	    }
+	    System.out.println("Irasai sukurti sekmingai!");
+	    
+	    */
+		
+		
+		
+		
+		
+		
+		Connection c = null;
+	    Statement stmt = null;
+	    int count = 0;
+	    try {
+	      Class.forName("org.sqlite.JDBC");
+	      c = DriverManager.getConnection("jdbc:sqlite:C:/Users/user/Downloads/SQLiteStudio/DuomenuBaze.db");	      
+	      c.setAutoCommit(false);
+	      
+	      try {
+              Statement st = c.createStatement();
+              BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+              /*System.out.println("Enter table name:");
+              String table = bf.readLine();*/
+              ResultSet res = st.executeQuery("SELECT COUNT(*) FROM KLIENTAI");
+              while (res.next()){
+                  count = res.getInt(1);
+              }
+              System.out.println("Number of row:"+count);
+          }
+          catch (SQLException s){
+              System.out.println("SQL statement is not executed!");
+          }
+	      
+	      
+	      /*System.out.println("Sekmingai prisijungta prie duomenu bazes");
+
+	      stmt = c.createStatement();
+	      String sql = "INSERT INTO KLIENTAI (VARDAS) " + "VALUES ('Kazys');";	      
+	      stmt.executeUpdate(sql);
+	      stmt.close();
+	      c.commit();
+	      c.close();*/
+	    } catch ( Exception e ) {
+	      System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+	      System.exit(0);
+	    }
+	    System.out.println("Irasai sukurti sekmingai!");
+	    
+	    /*-----------------------------------------------------*/
+	    
+	    try {
+            //Whatever the file path is.
+            File statText = new File("C://Users/user/Downloads/New text document.txt");
+            FileOutputStream is = new FileOutputStream(statText);
+            OutputStreamWriter osw = new OutputStreamWriter(is);    
+            Writer w = new BufferedWriter(osw);
+            w.write(" " + count);
+            w.close();
+        } catch (IOException e) {
+            System.err.println("Problem writing to the file statsTest.txt");
+        }
+	    
+	    
+
+	}
+
+}

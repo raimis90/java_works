@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+
+		/*
+		 * Parašyti programą, kuri paprašytų vartotojo įvesti 5 žodžius, tik po to kai
+		 * bus suvesti žodžiai, jie turi būti atvaizduojami.
+		 */
+
+		System.out.println("Iveskite 5 zodzius: ");
+		String[] zodis = new String[6];
+		int i;
+
+		for (i = 1; i <= 5; i++) {
+
+			zodis[i] = (new Scanner(System.in)).nextLine();
+		}
+		System.out.println("Jusu zodziai buvo: ");
+		for (i = 1; i <= 5; i++)
+
+			System.out.println(zodis[i]);
+	}
+}

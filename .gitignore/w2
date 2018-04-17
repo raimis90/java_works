@@ -1,0 +1,33 @@
+
+public class Main {
+
+	public static void main(String[] args) {
+		/*
+		 * Turime x ir y koordinačių plokštumą, joje yra du taškai, taškas A(x=1, y=3),
+		 * B(x=5, y =2). Suraskite tiesiausią atstumą tarp koordinačių.
+		 */
+
+		System.out.println("Tiesiausias atstumas tarp koordinaciu yra: \n(x=1, y=3.0)");
+		int x;
+		float y = 3;
+		for (x = 2; x <= 5; x++) {
+			for (float i = 0.25f; i <= 1; i++) {
+				y -= i;
+
+			}
+
+			System.out.println("(x=" + x + ", y=" + y + ")");
+
+		}
+		System.out.println("----------------------------------------------");
+
+		float xa = 1f;
+		float xb = 5f;
+		float ya = 3f;
+		float yb = 2f;
+		float atstumas = ((xb - xa) * (xb - xa)) + ((yb - ya) * (yb - ya));
+
+		System.out.println("Atstumas tarp A ir B koordinaciu = " + Math.sqrt(atstumas));
+
+	}
+}

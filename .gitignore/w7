@@ -1,0 +1,80 @@
+package lt.griskelis;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class N_D3B {
+
+	public static void main(String[] args) {
+		/*
+		 * b) Tikrinti pin kodo įvedimą 3 kartus. Kai vartotojas teisingai įveda pin
+		 * kodą, sistema jo paklausia ką nori daryti išgryninti pinigų ar baigti darbą.
+		 * Pasirinkus baigti darbą išeinama iš programos, kitu atveju kartojamas pinigų
+		 * išgryninimas tol, kol bankomate yra pinigų arba nusprendžiama baigti darbą.
+		 * Jei suvestas pin kodas 3 kartus neteisingai, tai parašoma yra ekraną, kad
+		 * sąskaita blokuota ir išeinama iš programos. Kitu atveju programa baigia
+		 * veikti, jei į mūsų bankomato klausimą “Ar dar norite vykdyti tolesnę
+		 * operaciją?“ yra atsakoma ne arba bankomate pinigų likutis yra mažesnis nei
+		 * 10. P.S nuimta pinigų suma minusuojasi iš buvusio bankomato likučio.
+		 */
+
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Iveskite pin koda: "); // Pin kodas: 2932
+		int pin = scan.nextInt();
+		switch (pin) {
+		case 2932:
+			System.out.println("Norint baigti darba spauskite - 0. Norint isgryninti pinigu dar karta iveskite pin:");
+			int kaDaryt = scan.nextInt();
+			if (kaDaryt != 2932) {
+				System.out.println("Jusu darbas baigtas.");
+				break;
+			}
+			if (kaDaryt == 2932) {
+				System.out.println("Sekmingai prisijungete");
+				int pinigai = 500;
+				while (pinigai > 10) {
+					System.out.println("Jusu saskaitoje: " + pinigai + " Eur" + ".\nIveskite norima isgryninti suma: ");
+					int suma = scan.nextInt();
+					if (suma > pinigai) {
+						System.out.println("Jusu saskaitoje nera tiek pinigu. Bandykite dar karta: ");
+						suma = scan.nextInt();
+					}
+					if (suma <= pinigai) {
+						pinigai = pinigai - suma;
+						System.out.println("Jus isgryninote: " + suma);
+					}
+					System.out.println("Ar dar norite vykdyti tolesne operacija? 0-ne, 1-taip");
+					kaDaryt = scan.nextInt();
+					if (kaDaryt == 0) {
+						System.out.println("Viso gero, sekmes!");
+						break;
+					}
+					if (kaDaryt == 1)
+						;
+					if (pinigai <= 10) {
+						System.out.println("Jusu likutis: " + pinigai + " Eur. Isgryninimo testi negalima.");
+					}
+				}
+			}
+			break;
+		default:
+			int blogasPin = 2;
+			while (true) {
+				if (pin != 2932) {
+					System.out.println("Neteisingas pin kodas. Jums liko " + blogasPin + " bandymai. Bandykite dar karta:");
+					blogasPin--;
+					pin = scan.nextInt();
+					if (blogasPin == 0&& pin!=2932) {
+						System.out.println("Tris kartus blogai suvedete pin. Jusu saskaita uzblokuota.");
+						break;
+					}
+					if (pin == 2932) {
+						System.out.println("Pin teisingas, bet saugumo sumetimais pradekite programa is naujo.");
+						break;
+					}
+				}
+			}
+		}
+	}
+
+}

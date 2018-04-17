@@ -1,0 +1,28 @@
+package lt.griskelis;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		/*
+		 * Parašyti programą, kuri paprašytų vartotojo vesti skaičius tol, kol bus
+		 * įvestas skaičius 0. Pabaigoje programos turi būti atvaizduojama įvestų
+		 * skaičių suma.
+		 */
+		Scanner a = new Scanner(System.in);
+		int skaiciai = 0;
+		int sum = 0;
+		System.out.println("Iveskite skaicius. (Paspaudus 0 suzinosite skaiciu suma)");
+
+		while (true) {
+			skaiciai = a.nextInt();
+			sum += skaiciai;
+			if (skaiciai == 0) {
+				System.out.println("Ivestu skaiciu suma yra: " + sum);
+			}
+
+		}
+	}
+
+}

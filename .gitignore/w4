@@ -1,0 +1,18 @@
+
+public class N_D1 {
+	public static void main(String[] args) {
+
+		/*
+		 * 1) Masyvą užpildome skaičiais nuo 1 iki 9. Programa turi atspausdinti visus
+		 * masyvo skaičius, kurie dalinasi iš 3.
+		 */
+
+		int[] a = new int[10];
+		for (int i = 1; i <= 9; i++) {
+			a[i] = i;
+			if (a[i] % 3 == 0) {
+				System.out.println(a[i]);
+			}
+		}
+	}
+}

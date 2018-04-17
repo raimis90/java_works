@@ -1,0 +1,26 @@
+
+public class N_D2 {
+	public static void main(String[] args) {
+
+		/*
+		 * 2) Parašyti programą, kuri suskaičiuotų visus pirminius skaičius nuo 10 iki
+		 * 100. Pirminis skaičius yra tas skaičius, kuris dalinasi iš 1 ir iš pats
+		 * savęs. Atsakymas turi būti toks : 11, 13, ... 97. Ar teisingai suskaičiuoja
+		 * galima pasitikrinti čia.
+		 * http://www.ematematikas.lt/forumas/pirminiu-skaiciu-iki-1000-lentele-t10728.
+		 * html
+		 */
+
+		for (int i = 10; i <= 100; i++) {
+			int sum = 0;
+			for (int j = i; j >= 1; j--) {
+				if (i % j == 0) {
+					sum++;
+				}
+			}
+			if (sum == 2) {
+				System.out.println(i);
+			}
+		}
+	}
+}

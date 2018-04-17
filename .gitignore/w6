@@ -1,0 +1,39 @@
+
+import java.util.Scanner;
+
+public class N_D3 {
+
+	public static void main(String[] args) {
+		/*
+		 * 3) a) Bankomate yra 500 pinigų, naudotojas paleidęs programą yra paprašomas
+		 * įvesti pin kodą, kuris yra “testas“, jei įvestas kodas teisingas naudotojas
+		 * gauna pranešimą, kad sėkmingai prisijungėte. Tuomet paprašo įvesti pinigų
+		 * kiekį, kuri nori išssigryninti. Kiekis negali būti didesnis nei bankomate yra
+		 * pinigų, jei įveda daugiau, tuomet informuojamas, kad bankomate nėra tiek
+		 * pinigų ir paprašo įvesti mažesnę sumą. Įvedus tinkamą sumą, ji yra
+		 * išgryninama ir parašoma, jog pinigai išgryninti ir programa baigia darbą.
+		 */
+
+		int pinigai = 500;
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Iveskite pin koda: "); // Pin kodas: 2932
+		int pin = scan.nextInt();
+		switch (pin) {
+		case 2932:
+			System.out.println("Sekmingai prisijungete. Jusu saskaitoje: " + pinigai + " Eur"
+					+ ".\nIveskite norima isgryninti suma: ");
+			int suma = scan.nextInt();
+			while (suma > pinigai) {
+				System.out.println("Jusu saskaitoje nera tiek pinigu. Bandykite dar karta: ");
+				suma = scan.nextInt();
+			}
+			if (suma <= pinigai) {
+				pinigai = pinigai - suma;
+				System.out.println("Jus isgryninote: " + suma + " Eur. Jusu saskaitos likutis: " + pinigai + " Eur.");
+			}
+		default:
+
+			System.out.println("Neteisingas pin kodas.");
+		}
+	}
+}
